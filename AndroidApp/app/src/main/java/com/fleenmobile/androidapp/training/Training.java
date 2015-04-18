@@ -6,8 +6,11 @@ import java.util.List;
 
 public class Training {
 
+    private static final int checkpointFrequency = 3;
+
     private final List<Pose> trainingPoses;
     private int trainingPosition = 0;
+    private int lastCheckpoint = 0;
     private boolean lastMoveCorrect = true;
 
     public Training(List<Pose> trainingPoses) {
@@ -22,8 +25,12 @@ public class Training {
         if (pose == trainingPoses.get(trainingPosition)) {
             trainingPosition++;
             lastMoveCorrect = true;
+
+            if (trainingPosition % checkpointFrequency == 0) {
+                lastCheckpoint = trainingPosition;
+            }
         } else {
-            trainingPosition = 0;
+            trainingPosition = lastCheckpoint;
             lastMoveCorrect = false;
         }
     }
