@@ -18,4 +18,8 @@
         android:layout_width="fill_parent"
         android:text="@string/settings_pair_myo"/>
 
+    <Button android:id="@+id/pair_sphero_button"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:text="@string/settings_pair_sphero"/>
 </LinearLayout>

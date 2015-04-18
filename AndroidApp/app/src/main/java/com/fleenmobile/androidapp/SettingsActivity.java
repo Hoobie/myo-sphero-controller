@@ -10,6 +10,8 @@ import android.widget.Button;
 
 import com.thalmic.myo.scanner.ScanActivity;
 
+import orbotix.robot.base.RobotProvider;
+
 
 public class SettingsActivity extends Activity {
 
@@ -17,13 +19,21 @@ public class SettingsActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        final Button pairMyoButton = (Button)findViewById(R.id.pair_myo_button);
+        final Button pairMyoButton = (Button) findViewById(R.id.pair_myo_button);
+        final Button pairSpheroButton = (Button) findViewById(R.id.pair_sphero_button);
 
         pairMyoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SettingsActivity.this, ScanActivity.class);
                 SettingsActivity.this.startActivity(intent);
+            }
+        });
+
+        pairSpheroButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RobotProvider.getDefaultProvider().startDiscovery(SettingsActivity.this);
             }
         });
 

@@ -167,6 +167,9 @@ public class MainActivity extends Activity {
         mTextView = (TextView) findViewById(R.id.text);
         mImageView = (ImageView)findViewById(R.id.logoView);
 
+//        Intent i  = new Intent(this, RobotHelloWorld.class);
+//        startActivity(i);
+
         // First, we initialize the Hub singleton with an application identifier.
         Hub hub = Hub.getInstance();
         if (!hub.init(this, getPackageName())) {
@@ -175,8 +178,7 @@ public class MainActivity extends Activity {
             finish();
 
             //  TODO: TEEEESSSTTTTTT REMOVE IT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-     //       Intent i  = new Intent(this, RobotHelloWorld.class);
-      //      startActivity(i);
+
             //  TODO: TEEEESSSTTTTTT REMOVE IT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             return;
         }
@@ -184,8 +186,8 @@ public class MainActivity extends Activity {
         // Next, register for DeviceListener callbacks.
         hub.addListener(mListener);
 
-        Intent intent = new Intent(this, ScanActivity.class);
-        this.startActivity(intent);
+//        Intent intent = new Intent(this, ScanActivity.class);
+//        this.startActivity(intent);
 
         final Button newGameButton = (Button)findViewById(R.id.new_game_button);
         final Button settingsButton = (Button)findViewById(R.id.settings_button);
