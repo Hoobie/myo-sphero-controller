@@ -24,11 +24,14 @@ import com.thalmic.myo.Quaternion;
 import com.thalmic.myo.XDirection;
 import com.thalmic.myo.scanner.ScanActivity;
 
+import orbotix.sphero.Sphero;
+
 public class MainActivity extends Activity {
 
     private TextView mLockStateView;
     private TextView mTextView;
     private ImageView mImageView;
+    private Sphero mRobot;
 
     // Classes that inherit from AbstractDeviceListener can be used to receive events from Myo devices.
     // If you do not override an event, the default behavior is to do nothing.
@@ -100,8 +103,8 @@ public class MainActivity extends Activity {
             mTextView.setRotation(roll);
             mTextView.setRotationX(pitch);
             mTextView.setRotationY(yaw);
-            mImageView.setRotation(roll/4);
-            mImageView.setRotationX(pitch/4);
+            mImageView.setRotation(roll / 4);
+            mImageView.setRotationX(pitch / 4);
             mImageView.setRotationY(yaw/4);
             Log.e("Zonk", "roll " + roll + ", pitch: " + pitch + ", yaw:" + yaw);
         }
@@ -206,6 +209,10 @@ public class MainActivity extends Activity {
                 startActivity(intent);
             }
         });
+
+        // Get Sphero
+        mRobot = ((Sphero)savedInstanceState.get("SPHERO"));
+
     }
 
     @Override
@@ -242,5 +249,21 @@ public class MainActivity extends Activity {
         // Launch the ScanActivity to scan for Myos to connect to.
         Intent intent = new Intent(this, ScanActivity.class);
         startActivity(intent);
+    }
+
+    /**
+     * Starts 1st training
+     * @param v
+     */
+    public void startTraining(View v) {
+
+        if (mRobot == null) {
+            Toast.makeText(this, "F U. Robot is not here", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        Intent i  = new Intent(this, FirstTraining.class);
+        i.putExtra("SPHERO", mRobot);
+        startActivity(i);
     }
 }

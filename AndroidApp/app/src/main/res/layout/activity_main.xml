@@ -18,6 +18,7 @@
     <Button android:id="@+id/new_game_button"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
+        android:onClick="startTraining"
         android:text="@string/menu_new_game"/>
 
     <Button android:id="@+id/settings_button"
