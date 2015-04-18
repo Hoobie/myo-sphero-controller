@@ -57,7 +57,7 @@ public class MainActivity extends Activity {
             // Set the text color of the text view to cyan when a Myo connects.
             mTextView.setTextColor(Color.CYAN);
             Toast.makeText(MainActivity.this, "connect", Toast.LENGTH_LONG).show();
-
+            Log.e("A", "Paired with armband");
             pairSphero();
         }
 
@@ -248,6 +248,7 @@ public class MainActivity extends Activity {
         RobotProvider.getDefaultProvider().addConnectionListener(new ConnectionListener() {
             @Override
             public void onConnected(Robot robot) {
+                Log.e("A", "Paired with sphero");
                 mRobot = (Sphero) robot;
                 MainActivity.this.connected();
             }
@@ -293,6 +294,21 @@ public class MainActivity extends Activity {
     }
 
     private void connected() {
+        // Send a roll command to Sphero so it goes forward at full speed.
+        mRobot.drive(0.0f, 1.0f);                                           // 1
+//        mRobot.drive(90.0f);
+
+        // Send a delayed message on a handler
+        final Handler handler = new Handler();                               // 2
+        handler.postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                // Send a stop to Sphero
+                mRobot.stop();                                               // 3
+            }
+        }, 2000);
+
         Log.d(TAG, "Connected On Thread: " + Thread.currentThread().getName());
         Log.d(TAG, "Connected: " + mRobot);
         Toast.makeText(this, mRobot.getName() + " Connected", Toast.LENGTH_LONG).show();
@@ -305,18 +321,18 @@ public class MainActivity extends Activity {
             }
         }, SensorFlag.ACCELEROMETER_NORMALIZED, SensorFlag.GYRO_NORMALIZED);
 
-        control.setRate(1);
-        mRobot.enableStabilization(false);
-        mRobot.drive(90, 0);
-        mRobot.setBackLEDBrightness(.5f);
-
-        mRobot.getCollisionControl().startDetection(255, 255, 255, 255, 255);
-        mRobot.getCollisionControl().addCollisionListener(new CollisionListener() {
-            public void collisionDetected(CollisionDetectedAsyncData collisionData) {
-                Log.d(TAG, collisionData.toString());
-            }
-        });
-
+//        control.setRate(1);
+//        mRobot.enableStabilization(false);
+//        mRobot.drive(90, 1);
+//        mRobot.setBackLEDBrightness(.5f);
+//
+//        mRobot.getCollisionControl().startDetection(255, 255, 255, 255, 255);
+//        mRobot.getCollisionControl().addCollisionListener(new CollisionListener() {
+//            public void collisionDetected(CollisionDetectedAsyncData collisionData) {
+//                Log.d(TAG, collisionData.toString());
+//            }
+//        });
+//
         blink(false); // Blink the robot's LED
 
         boolean preventSleepInCharger = mRobot.getConfiguration().isPersistentFlagEnabled(PersistentOptionFlags.PreventSleepInCharger);
