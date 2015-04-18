@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -178,6 +180,22 @@ public class MainActivity extends Activity {
 
         Intent intent = new Intent(this, ScanActivity.class);
         this.startActivity(intent);
+
+        final Button newGameButton = (Button)findViewById(R.id.new_game_button);
+        final Button settingsButton = (Button)findViewById(R.id.settings_button);
+        newGameButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("Menu", "Clicked new game");
+            }
+        });
+
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("Menu", "Clicked settings");
+            }
+        });
     }
 
     @Override
