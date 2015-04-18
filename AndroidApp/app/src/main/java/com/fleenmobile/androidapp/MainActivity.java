@@ -116,9 +116,6 @@ public class MainActivity extends Activity {
             }
 
             // Next, we apply a rotation to the text view using the roll, pitch, and yaw.
-            mTextView.setRotation(roll);
-            mTextView.setRotationX(pitch);
-            mTextView.setRotationY(yaw);
             mImageView.setRotation(roll / 4);
             mImageView.setRotationX(pitch / 4);
             mImageView.setRotationY(yaw / 4);
@@ -148,19 +145,19 @@ public class MainActivity extends Activity {
                     break;
                 case FIST:
                     mTextView.setText(getString(R.string.pose_fist));
-                    drive(0.0f);
+                    drive(0.0f, 0, 0 ,255);
                     break;
                 case WAVE_IN:
                     mTextView.setText(getString(R.string.pose_wavein));
-                    drive(270.0f);
+                    drive(270.0f, 255, 0 ,255);
                     break;
                 case WAVE_OUT:
                     mTextView.setText(getString(R.string.pose_waveout));
-                    drive(90.0f);
+                    drive(90.0f, 0, 255 ,0);
                     break;
                 case FINGERS_SPREAD:
                     mTextView.setText(getString(R.string.pose_fingersspread));
-                    drive(180.0f);
+                    drive(180.0f, 255, 0 ,0);
                     break;
             }
 
@@ -179,16 +176,19 @@ public class MainActivity extends Activity {
             }
         }
 
-        private void drive(float angle) {
-            mRobot.drive(angle, 1.0f);
-            final Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
+        private void drive(float angle, int r, int g, int b) {
+            if (mRobot != null) {
+                mRobot.setColor(r,g,b);
+                mRobot.drive(angle, 0.5f);
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
 
-                @Override
-                public void run() {
-                    mRobot.stop();
-                }
-            }, 1000);
+                    @Override
+                    public void run() {
+                        mRobot.stop();
+                    }
+                }, 1000);
+            }
         }
     };
 
@@ -311,8 +311,6 @@ public class MainActivity extends Activity {
 
     private void connected() {
         // Send a roll command to Sphero so it goes forward at full speed.
-        mRobot.drive(0.0f, 1.0f);                                           // 1
-//        mRobot.drive(90.0f);
 
         // Send a delayed message on a handler
         final Handler handler = new Handler();                               // 2
@@ -349,7 +347,6 @@ public class MainActivity extends Activity {
 //            }
 //        });
 //
-        blink(false); // Blink the robot's LED
 
         boolean preventSleepInCharger = mRobot.getConfiguration().isPersistentFlagEnabled(PersistentOptionFlags.PreventSleepInCharger);
         Log.d(TAG, "Prevent Sleep in charger = " + preventSleepInCharger);
