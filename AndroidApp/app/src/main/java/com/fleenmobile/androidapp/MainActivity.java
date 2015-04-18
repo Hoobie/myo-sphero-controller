@@ -23,6 +23,7 @@ import com.thalmic.myo.Quaternion;
 import com.thalmic.myo.XDirection;
 import com.thalmic.myo.scanner.ScanActivity;
 
+import orbotix.robot.base.Robot;
 import orbotix.sphero.Sphero;
 
 public class MainActivity extends Activity {
@@ -30,7 +31,7 @@ public class MainActivity extends Activity {
     private TextView mLockStateView;
     private TextView mTextView;
     private ImageView mImageView;
-    private Sphero mRobot;
+    private Robot mRobot;
 
     // Classes that inherit from AbstractDeviceListener can be used to receive events from Myo devices.
     // If you do not override an event, the default behavior is to do nothing.
@@ -104,7 +105,7 @@ public class MainActivity extends Activity {
             mTextView.setRotationY(yaw);
             mImageView.setRotation(roll / 4);
             mImageView.setRotationX(pitch / 4);
-            mImageView.setRotationY(yaw/4);
+            mImageView.setRotationY(yaw / 4);
         }
 
         // onPose() is called whenever a Myo provides a new pose.
@@ -191,7 +192,7 @@ public class MainActivity extends Activity {
         this.startActivity(intent);
 
         // Get Sphero
-        mRobot = ((Sphero)getIntent().getParcelableExtra("SPHERO"));
+        mRobot = ((Robot)getIntent().getParcelableExtra("SPHERO"));
 
     }
 

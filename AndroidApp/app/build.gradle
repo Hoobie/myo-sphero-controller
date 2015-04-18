@@ -19,6 +19,15 @@ android {
     }
 }
 
+task copyJniLibs(type: Copy) {
+    from 'libs/armeabi'
+    into 'src/main/jniLibs/armeabi'
+}
+tasks.withType(JavaCompile) {
+    compileTask -> compileTask.dependsOn(copyJniLibs)
+}
+clean.dependsOn 'cleanCopyJniLibs'
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:21.0.3'

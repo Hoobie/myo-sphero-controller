@@ -5,20 +5,23 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import orbotix.robot.base.Robot;
+import orbotix.robot.internal.DeviceCommand;
 import orbotix.sphero.Sphero;
 
 
 public class FirstTraining extends ActionBarActivity {
 
-    private Sphero mRobot;
+    private Robot mRobot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_training);
 
-        mRobot = ((Sphero)getIntent().getParcelableExtra("SPHERO"));
-        mRobot.drive(90, 0);
+        mRobot = ((Robot)getIntent().getParcelableExtra("SPHERO"));
+        final Sphero sphero = new Sphero(mRobot.getDevice());
+        sphero.drive(90, 0);
     }
 
 

@@ -2,6 +2,7 @@ package com.fleenmobile.androidapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.audiofx.BassBoost;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -103,7 +104,7 @@ public class SettingsActivity extends Activity {
             }
         });
 
-        boolean success = RobotProvider.getDefaultProvider().startDiscovery(this);
+        boolean success = RobotProvider.getDefaultProvider().startDiscovery(SettingsActivity.this);
         if(!success){
             Toast.makeText(SettingsActivity.this, "Unable To start Discovery!", Toast.LENGTH_LONG).show();
         }
