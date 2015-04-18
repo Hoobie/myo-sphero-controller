@@ -148,15 +148,19 @@ public class MainActivity extends Activity {
                     break;
                 case FIST:
                     mTextView.setText(getString(R.string.pose_fist));
+                    drive(0.0f);
                     break;
                 case WAVE_IN:
                     mTextView.setText(getString(R.string.pose_wavein));
+                    drive(270.0f);
                     break;
                 case WAVE_OUT:
                     mTextView.setText(getString(R.string.pose_waveout));
+                    drive(90.0f);
                     break;
                 case FINGERS_SPREAD:
                     mTextView.setText(getString(R.string.pose_fingersspread));
+                    drive(180.0f);
                     break;
             }
 
@@ -173,6 +177,18 @@ public class MainActivity extends Activity {
                 // stay unlocked while poses are being performed, but lock after inactivity.
                 myo.unlock(Myo.UnlockType.TIMED);
             }
+        }
+
+        private void drive(float angle) {
+            mRobot.drive(angle, 1.0f);
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    mRobot.stop();
+                }
+            }, 1000);
         }
     };
 
