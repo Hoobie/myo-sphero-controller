@@ -192,7 +192,7 @@ public class MainActivity extends Activity {
         this.startActivity(intent);
 
         // Get Sphero
-        mRobot = ((Sphero)savedInstanceState.get("SPHERO"));
+        mRobot = ((Sphero)getIntent().getParcelableExtra("SPHERO"));
 
     }
 
@@ -245,6 +245,11 @@ public class MainActivity extends Activity {
 
         Intent i  = new Intent(this, FirstTraining.class);
         i.putExtra("SPHERO", mRobot);
+        startActivity(i);
+    }
+
+    public void startSettings(View v) {
+        Intent i = new Intent(this, SettingsActivity.class);
         startActivity(i);
     }
 }

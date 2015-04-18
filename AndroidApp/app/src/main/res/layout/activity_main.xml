@@ -25,6 +25,7 @@
     <Button android:id="@+id/settings_button"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
+        android:onClick="startSettings"
         android:text="@string/menu_settings"
         android:textColor="@android:color/white"/>
 
