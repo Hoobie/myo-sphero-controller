@@ -17,7 +17,7 @@ public class FirstTraining extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_training);
 
-        mRobot = ((Sphero)savedInstanceState.get("SPHERO"));
+        mRobot = ((Sphero)getIntent().getParcelableExtra("SPHERO"));
         mRobot.drive(90, 0);
     }
 
