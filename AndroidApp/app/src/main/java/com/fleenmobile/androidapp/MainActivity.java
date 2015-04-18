@@ -26,11 +26,9 @@ import com.thalmic.myo.scanner.ScanActivity;
 
 import java.util.List;
 
-import orbotix.robot.base.CollisionDetectedAsyncData;
 import orbotix.robot.base.Robot;
 import orbotix.robot.base.RobotProvider;
 import orbotix.robot.sensor.DeviceSensorsData;
-import orbotix.sphero.CollisionListener;
 import orbotix.sphero.ConnectionListener;
 import orbotix.sphero.DiscoveryListener;
 import orbotix.sphero.PersistentOptionFlags;
@@ -44,6 +42,10 @@ public class MainActivity extends Activity {
     private TextView mLockStateView;
     private TextView mTextView;
     private ImageView mImageView;
+    private ImageView fist;
+    private ImageView spread;
+    private ImageView in;
+    private ImageView out;
     private Sphero mRobot;
     private static final String TAG = "main";
 
@@ -146,18 +148,22 @@ public class MainActivity extends Activity {
                 case FIST:
                     mTextView.setText(getString(R.string.pose_fist));
                     drive(0.0f, 0, 0 ,255);
+                    fist.setBackgroundColor(Color.parseColor("#0000ff"));
                     break;
                 case WAVE_IN:
                     mTextView.setText(getString(R.string.pose_wavein));
                     drive(270.0f, 255, 0 ,255);
+                    fist.setBackgroundColor(Color.parseColor("#ff00ff"));
                     break;
                 case WAVE_OUT:
                     mTextView.setText(getString(R.string.pose_waveout));
                     drive(90.0f, 0, 255 ,0);
+                    fist.setBackgroundColor(Color.parseColor("#00ff00"));
                     break;
                 case FINGERS_SPREAD:
                     mTextView.setText(getString(R.string.pose_fingersspread));
                     drive(180.0f, 255, 0 ,0);
+                    fist.setBackgroundColor(Color.parseColor("#ff0000"));
                     break;
             }
 
@@ -200,6 +206,10 @@ public class MainActivity extends Activity {
         mLockStateView = (TextView) findViewById(R.id.lock_state);
         mTextView = (TextView) findViewById(R.id.text);
         mImageView = (ImageView)findViewById(R.id.logoView);
+        fist = (ImageView)findViewById(R.id.fist);
+        spread = (ImageView)findViewById(R.id.fingers);
+        in = (ImageView)findViewById(R.id.waveIn);
+        out = (ImageView)findViewById(R.id.waveOut);
 
 //        Intent i  = new Intent(this, RobotHelloWorld.class);
 //        startActivity(i);
