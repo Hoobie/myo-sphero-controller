@@ -1,8 +1,10 @@
 package com.fleenmobile.androidapp;
+
 import android.app.Activity;
-import android.graphics.Color;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -94,6 +96,7 @@ public class MainActivity extends Activity {
             mTextView.setRotation(roll);
             mTextView.setRotationX(pitch);
             mTextView.setRotationY(yaw);
+            Log.e("Zonk", "roll " + roll + ", pitch: " + pitch + ", yaw:" + yaw);
         }
 
         // onPose() is called whenever a Myo provides a new pose.
