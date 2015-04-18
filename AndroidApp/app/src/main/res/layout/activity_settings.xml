@@ -16,11 +16,13 @@
     <Button android:id="@+id/pair_myo_button"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
-        android:text="@string/settings_pair_myo"/>
+        android:text="@string/settings_pair_myo"
+        android:textColor="@android:color/white"/>
 
     <Button android:id="@+id/pair_sphero_button"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
         android:onClick="pairSphero"
-        android:text="@string/settings_pair_sphero"/>
+        android:text="@string/settings_pair_sphero"
+        android:textColor="@android:color/white"/>
 </LinearLayout>
