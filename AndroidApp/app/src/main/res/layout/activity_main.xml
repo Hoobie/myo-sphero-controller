@@ -1,16 +1,27 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.thalmic.android.sample.helloworld.HelloWorldActivity"
     tools:ignore="MergeRootFrame"
-    android:background="@drawable/background">
+    android:background="@drawable/background"
+    android:orientation="vertical">
 
     <ImageView android:background="@drawable/logo"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
         android:contentDescription="Logo" />
+
+    <Button android:id="@+id/new_game_button"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:text="@string/menu_new_game"/>
+
+    <Button android:id="@+id/settings_button"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:text="@string/menu_settings"/>
 
     <TextView
         android:id="@+id/lock_state"
@@ -31,4 +42,4 @@
         android:layout_gravity="center"
         tools:ignore="SpUsage"/>
 
-</FrameLayout>
+</LinearLayout>

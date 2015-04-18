@@ -15,5 +15,7 @@
     <string name="title_activity_robot_hello_world">RobotHelloWorld</string>
     <string name="action_settings">Settings</string>
     <string name="instruction">Click the \"Hello, World!\" button to flash the LED</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_new_game">New game</string>
 
 </resources>
