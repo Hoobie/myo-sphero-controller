@@ -9,7 +9,7 @@
     android:orientation="vertical">
 
     <ImageView
-        android:="@+id/logoView"
+        android:id="@+id/logoView"
         android:background="@drawable/logo"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"

@@ -200,6 +200,8 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Log.d("Menu", "Clicked settings");
+                final Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(intent);
             }
         });
     }
