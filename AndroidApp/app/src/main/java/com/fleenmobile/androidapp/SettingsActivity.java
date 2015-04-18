@@ -18,6 +18,7 @@ public class SettingsActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_settings);
 
         final Button pairMyoButton = (Button) findViewById(R.id.pair_myo_button);
         final Button pairSpheroButton = (Button) findViewById(R.id.pair_sphero_button);
@@ -37,7 +38,6 @@ public class SettingsActivity extends Activity {
             }
         });
 
-        setContentView(R.layout.activity_settings);
     }
 
 
