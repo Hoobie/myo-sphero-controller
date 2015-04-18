@@ -105,7 +105,6 @@ public class MainActivity extends Activity {
             mImageView.setRotation(roll / 4);
             mImageView.setRotationX(pitch / 4);
             mImageView.setRotationY(yaw/4);
-            Log.e("Zonk", "roll " + roll + ", pitch: " + pitch + ", yaw:" + yaw);
         }
 
         // onPose() is called whenever a Myo provides a new pose.
