@@ -33,6 +33,7 @@ public class MainActivity extends Activity {
         public void onConnect(Myo myo, long timestamp) {
             // Set the text color of the text view to cyan when a Myo connects.
             mTextView.setTextColor(Color.CYAN);
+            Toast.makeText(MainActivity.this, "connect", Toast.LENGTH_LONG).show();
         }
 
         // onDisconnect() is called whenever a Myo has been disconnected.
@@ -40,6 +41,7 @@ public class MainActivity extends Activity {
         public void onDisconnect(Myo myo, long timestamp) {
             // Set the text color of the text view to red when a Myo disconnects.
             mTextView.setTextColor(Color.RED);
+            Toast.makeText(MainActivity.this, "disconnec", Toast.LENGTH_LONG).show();
         }
 
         // onArmSync() is called whenever Myo has recognized a Sync Gesture after someone has put it on their
@@ -47,6 +49,7 @@ public class MainActivity extends Activity {
         @Override
         public void onArmSync(Myo myo, long timestamp, Arm arm, XDirection xDirection) {
             mTextView.setText(myo.getArm() == Arm.LEFT ? R.string.arm_left : R.string.arm_right);
+            Toast.makeText(MainActivity.this, "armsync", Toast.LENGTH_LONG).show();
         }
 
         // onArmUnsync() is called whenever Myo has detected that it was moved from a stable position on a person's arm after
@@ -55,6 +58,7 @@ public class MainActivity extends Activity {
         @Override
         public void onArmUnsync(Myo myo, long timestamp) {
             mTextView.setText(R.string.hello_world);
+            Toast.makeText(MainActivity.this, "unsync", Toast.LENGTH_LONG).show();
         }
 
         // onUnlock() is called whenever a synced Myo has been unlocked. Under the standard locking
@@ -160,14 +164,17 @@ public class MainActivity extends Activity {
             finish();
 
             //  TODO: TEEEESSSTTTTTT REMOVE IT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            Intent i  = new Intent(this, RobotHelloWorld.class);
-            startActivity(i);
+     //       Intent i  = new Intent(this, RobotHelloWorld.class);
+      //      startActivity(i);
             //  TODO: TEEEESSSTTTTTT REMOVE IT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             return;
         }
 
         // Next, register for DeviceListener callbacks.
         hub.addListener(mListener);
+
+        Intent intent = new Intent(this, ScanActivity.class);
+        this.startActivity(intent);
     }
 
     @Override
