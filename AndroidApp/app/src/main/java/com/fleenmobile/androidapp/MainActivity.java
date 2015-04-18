@@ -10,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ public class MainActivity extends Activity {
 
     private TextView mLockStateView;
     private TextView mTextView;
+    private ImageView mImageView;
 
     // Classes that inherit from AbstractDeviceListener can be used to receive events from Myo devices.
     // If you do not override an event, the default behavior is to do nothing.
@@ -98,6 +100,9 @@ public class MainActivity extends Activity {
             mTextView.setRotation(roll);
             mTextView.setRotationX(pitch);
             mTextView.setRotationY(yaw);
+            mImageView.setRotation(roll/4);
+            mImageView.setRotationX(pitch/4);
+            mImageView.setRotationY(yaw/4);
             Log.e("Zonk", "roll " + roll + ", pitch: " + pitch + ", yaw:" + yaw);
         }
 
@@ -160,6 +165,7 @@ public class MainActivity extends Activity {
 
         mLockStateView = (TextView) findViewById(R.id.lock_state);
         mTextView = (TextView) findViewById(R.id.text);
+        mImageView = (ImageView)findViewById(R.id.logoView);
 
         // First, we initialize the Hub singleton with an application identifier.
         Hub hub = Hub.getInstance();

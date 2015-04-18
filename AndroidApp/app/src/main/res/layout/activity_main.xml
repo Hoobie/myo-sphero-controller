@@ -8,7 +8,9 @@
     android:background="@drawable/background"
     android:orientation="vertical">
 
-    <ImageView android:background="@drawable/logo"
+    <ImageView
+        android:="@+id/logoView"
+        android:background="@drawable/logo"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
         android:contentDescription="Logo" />
